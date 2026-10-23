@@ -91,7 +91,7 @@ public final class AIChatbotPlugin extends JavaPlugin {
 JsonArray messages = new JsonArray();
             JsonObject system = new JsonObject(); system.addProperty("role", "system"); system.addProperty("content", systemPrompt); messages.add(system);
             JsonObject user = new JsonObject(); user.addProperty("role", "user"); user.addProperty("content", "Minecraft-Spieler " + playerName + " fragt: " + prompt); messages.add(user);
-            body.add("messages", messages) 
+            body.add("messages", messages); 
 
             int timeout = Math.max(5, config.getInt("ai.request-timeout-seconds", 30));
             HttpRequest.Builder requestBuilder = HttpRequest.newBuilder()
