@@ -1,10 +1,10 @@
 # IMPORTANT: Minehut cannot reach your own PC via localhost.
 # Set base-url to an Ollama server that is reachable from the Minehut server.
 ai:
-  provider: "ollama"
+  provider: "groq"
   api-key: ""
-  model: "llama3.2"
-  base-url: "http://localhost:11434"
+  model: "llama-3.3-70b-versatile"
+  base-url: "https://api.groq.com/openai/v1"
   max-tokens: 300
   cooldown-seconds: 3
   history-size: 10
