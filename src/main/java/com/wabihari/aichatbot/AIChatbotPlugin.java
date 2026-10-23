@@ -87,15 +87,15 @@ public final class AIChatbotPlugin extends JavaPlugin {
             JsonObject body = new JsonObject();
             body.addProperty("model", model);
             body.addProperty("stream", false);
-            JsonArray messages = new JsonArray();
+            body.addProperty("max_completion_tokens", maxTokens);
+JsonArray messages = new JsonArray();
             JsonObject system = new JsonObject(); system.addProperty("role", "system"); system.addProperty("content", systemPrompt); messages.add(system);
             JsonObject user = new JsonObject(); user.addProperty("role", "user"); user.addProperty("content", "Minecraft-Spieler " + playerName + " fragt: " + prompt); messages.add(user);
-            body.add("messages", messages);
-            JsonObject options = new JsonObject(); options.addProperty("num_predict", maxTokens); body.add("options", options);
+            body.add("messages", messages) 
 
             int timeout = Math.max(5, config.getInt("ai.request-timeout-seconds", 30));
             HttpRequest.Builder requestBuilder = HttpRequest.newBuilder()
-                    .uri(URI.create(baseUrl + "/api/chat"))
+                    .uri(URI.create(baseUrl + "/chat/completions"))
                     .timeout(Duration.ofSeconds(timeout))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(body.toString()));
@@ -109,7 +109,11 @@ public final class AIChatbotPlugin extends JavaPlugin {
                 return;
             }
             JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
-            String answer = json.getAsJsonObject("message").get("content").getAsString().trim();
+            String answer = json
+            .getAsJsonArray("choices")
+            .get(0).getAsJsonObject()
+            .getAsJsonObject("message")
+            .get("content").getAsString().trim();
             if (answer.isBlank()) answer = "Ich habe gerade keine Antwort.";
             String finalAnswer = answer;
             Bukkit.getScheduler().runTask(this, () -> {
