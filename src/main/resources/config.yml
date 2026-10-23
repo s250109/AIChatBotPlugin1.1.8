@@ -1,5 +1,5 @@
-# IMPORTANT: Minehut cannot reach your own PC via localhost.
-# Set base-url to an Ollama server that is reachable from the Minehut server.
+
+# Enter your API-Key at api-key. You can get a key at https://console.groq.com/keys .
 ai:
   provider: "groq"
   api-key: ""
@@ -9,12 +9,12 @@ ai:
   cooldown-seconds: 3
   history-size: 10
   request-timeout-seconds: 30
-  system-prompt: "You are a helpful assistant on a Minecraft server. Always reply in English, keep answers short (maximum 3 sentences), be friendly, and do not use Markdown. And you can use some emojis."
+  system-prompt: "You are a helpful assistant on a Minecraft server. Always reply in English, keep answers short (maximum 3 sentences), be friendly, and do not use Markdown. You can use !,?, !? and ?!. Answer like Chat GPT. "
 messages:
   prefix: "&8[&bAI&8] &r"
-  usage: "&eVerwendung: /ai <Nachricht>"
-  thinking: "&7Die KI denkt nach..."
-  error: "&cDie KI ist gerade nicht erreichbar. Bitte versuche es später erneut."
-  cooldown: "&cBitte warte noch {seconds} Sekunden."
+  usage: "&eUse: /ai <text>"
+  thinking: "&7AI is thinking..."
+  error: "&cThe AI ​​is currently unavailable. Please try again later."
+  cooldown: "&cPlease wait {seconds} Seconds."
   no-permission: "&cYou don't have permissions to do that."
   reloaded: "&aSuccesfully reloaded."
