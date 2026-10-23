@@ -16,5 +16,5 @@ messages:
   thinking: "&7Die KI denkt nach..."
   error: "&cDie KI ist gerade nicht erreichbar. Bitte versuche es später erneut."
   cooldown: "&cBitte warte noch {seconds} Sekunden."
-  no-permission: "&cDu darfst diesen Befehl nicht verwenden."
-  reloaded: "&aKonfiguration neu geladen."
+  no-permission: "&cYou don't have permissions to do that."
+  reloaded: "&aSuccesfully reloaded."
