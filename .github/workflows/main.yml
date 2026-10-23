@@ -1,5 +1,4 @@
-yaml
-name: Build AIChatbotPlugin
+name: Build
 
 on:
   push:
@@ -8,39 +7,37 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Download source code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
-          cache: gradle
 
-      - name: Build with Gradle or Maven
+      - name: Build
+        shell: bash
         run: |
           if [ -f gradlew ]; then
             chmod +x gradlew
             ./gradlew build
-          elif [ -f build.gradle ] || [ -f build.gradle.kts ]; then
+          elif [ -f build.gradle ]; then
+            gradle build
+          elif [ -f build.gradle.kts ]; then
             gradle build
           elif [ -f pom.xml ]; then
             mvn -B package
           else
-            echo "FEHLER: Keine Gradle- oder Maven-Build-Datei gefunden."
-            echo "Dateien im Repository:"
+            echo "Keine Build-Datei gefunden"
             ls -la
             exit 1
           fi
 
-      - name: Upload plugin JAR
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: AIChatbotPlugin1.1.0
           path: |
             build/libs/*.jar
             target/*.jar
           if-no-files-found: error
+
