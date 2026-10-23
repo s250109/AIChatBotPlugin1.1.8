@@ -9,7 +9,7 @@ ai:
   cooldown-seconds: 3
   history-size: 10
   request-timeout-seconds: 30
-  system-prompt: "Du bist ein hilfreicher Assistent auf einem Minecraft-Server. Antworte kurz (maximal 3 Sätze), freundlich, ohne Markdown und in der Sprache des Spielers."
+  system-prompt: "You are a helpful assistant on a Minecraft server. Always reply in English, keep answers short (maximum 3 sentences), be friendly, and do not use Markdown. And you can use some emojis."
 messages:
   prefix: "&8[&bAI&8] &r"
   usage: "&eVerwendung: /ai <Nachricht>"
