@@ -66,7 +66,7 @@ public final class AIChatbotPlugin extends JavaPlugin {
 
     String prompt = String.join(" ", args);
 
-    player.sendMessage("§aDein Bild wird generiert! Bitte warte...");
+    player.sendMessage("§aYour image is being generated! Please wait...");
     aiMapGenerator.generate(player, prompt);
 
     return true;
