@@ -55,7 +55,7 @@ public final class AIMapGenerator {
 
                 if (accountId.isBlank() || apiToken.isBlank()) {
                     sendMessage(playerId,
-                            "§cCloudflare ist nicht konfiguriert.");
+                            "§cCloudflare is not configured.");
                     return;
                 }
 
@@ -90,8 +90,8 @@ public final class AIMapGenerator {
                                     + response.statusCode());
 
                     sendMessage(playerId,
-                            "§cBildgenerierung fehlgeschlagen. "
-                                    + "Prüfe die Serverkonsole.");
+                            "§cImage generation failed. "
+                                    + "Check the server console.");
                     return;
                 }
 
@@ -116,7 +116,7 @@ public final class AIMapGenerator {
                                     + "be decoded as an image.");
 
                     sendMessage(playerId,
-                            "§cDie KI-Antwort ist kein lesbares Bild.");
+                            "§cThe AI ​​response is not a readable image.");
                     return;
                 }
 
@@ -196,7 +196,7 @@ public final class AIMapGenerator {
 
                         if (meta == null) {
                             sendMessage(playerId,
-                                    "§cDie Karten-Metadaten fehlen.");
+                                    "§cThe map metadata is missing.");
                             return;
                         }
 
@@ -215,7 +215,7 @@ public final class AIMapGenerator {
                         );
 
                         onlinePlayer.sendMessage(
-                                "§aDeine KI-Karte ist fertig!"
+                                "§aYour AI map is finished!"
                         );
 
                     } catch (Exception exception) {
@@ -225,8 +225,8 @@ public final class AIMapGenerator {
                         );
 
                         onlinePlayer.sendMessage(
-                                "§cDie Minecraft-Karte konnte "
-                                        + "nicht erstellt werden."
+                                "§cThe Minecraft map could "
+                                        + "not be created."
                         );
                     }
                 });
@@ -240,8 +240,8 @@ public final class AIMapGenerator {
                 );
 
                 sendMessage(playerId,
-                        "§cFehler bei der Bildgenerierung. "
-                                + "Prüfe die Serverkonsole.");
+                        "§cError during image generation. "
+                                + "Check the server console.");
             }
         });
     }
