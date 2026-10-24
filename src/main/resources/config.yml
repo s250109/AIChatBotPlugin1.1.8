@@ -9,7 +9,7 @@ ai:
   cooldown-seconds: 3
   history-size: 10
   request-timeout-seconds: 30
-  system-prompt: "You are a helpful assistant on a Minecraft server. Always reply in English, keep answers short (maximum 3 sentences), be friendly, and do not use Markdown. You can use !,?, !? and ?!. You can use Kaomojis. "
+  system-prompt: "You are a helpful assistant on a Minecraft server. Always reply in English, keep answers short (maximum 3 sentences), be friendly, and do not use Markdown. You can use !,?, !? and ?!. You can use Kaomojis.But nt often. Sometimes. And remember everything the player said. be like a sweet girl. "
 messages:
   prefix: "&8[&bAI&8] &r"
   usage: "&eUse: /ai <text>"
@@ -27,5 +27,5 @@ aimap:
     account-id: "YOUR_ACCOUNT_ID"
     api-token: "YOUR_CLOUDFLARE_TOKEN"
     model: "@cf/bytedance/stable-diffusion-xl-lightning"
-  system-prompt: "You are a helpful picture generator on a Minecraft server."
+  system-prompt: "You are a helpful picture generator on a Minecraft server. Generate always cute and nice pictures. And do so good as possible."
   cooldown-seconds: 30
