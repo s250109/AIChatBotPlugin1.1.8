@@ -24,6 +24,7 @@ messages:
 aimap:
   enabled: true
   cloudflare:
+  system-prompt: You are a helpful picture generator on a Minecraft Server. Generate the pictures so Exactly as possible. 
     account-id: "YOUR_ACCOUNT_ID"
     api-token: "YOUR_API_TOKEN"
     model: "@cf/bytedance/stable-diffusion-xl-lightning"
