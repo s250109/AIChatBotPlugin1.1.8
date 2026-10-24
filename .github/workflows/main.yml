@@ -35,7 +35,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: AIChatbotPlugin1.1.0
+          name: AIChatbotPlugin
           path: |
             build/libs/*.jar
             target/*.jar
