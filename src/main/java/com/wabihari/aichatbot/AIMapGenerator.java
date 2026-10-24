@@ -16,7 +16,6 @@ import java.util.UUID;
 
 public final class AIMapGenerator {
 
-```
 private final JavaPlugin plugin;
 private final HttpClient httpClient;
 
@@ -105,6 +104,5 @@ private void sendMessage(UUID playerId, String message) {
         }
     });
 }
-```
 
 }
