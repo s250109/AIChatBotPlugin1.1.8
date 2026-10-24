@@ -163,7 +163,8 @@ JsonArray messages = new JsonArray();
     private void sendError(UUID playerId) {
         Bukkit.getScheduler().runTask(this, () -> {
             Player player = Bukkit.getPlayer(playerId);
-            if (player != null && player.isOnline()) sendConfigured(player, "messages.error", "&cDie KI ist gerade nicht erreichbar. Bitte versuche es später erneut.");
+            if (player != null && player.isOnline()) sendConfigured(player, "messages.error", "&cerror: "&cThe AI is currently unavailable. Please try again later."
+");
         });
     }
 
