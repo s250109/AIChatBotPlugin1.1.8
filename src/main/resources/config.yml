@@ -22,9 +22,9 @@ messages:
 # AI Map generation
 # Enter your API-Token at api-token. You can get a key at https://dash.cloudflare.com/b9f2234aa3406cf786b341cc9e99547e/ai/workers-ai/api-quick-start . You also need the Account ID.
 aimap:
-enabled: true
-cloudflare:
-account-id: "YOUR_ACCOUNT_ID"
-api-token: "YOUR_CLOUD_TOKEN"
-model: "@cf/bytedance/stable-diffusion-xl-lightning"
-cooldown-seconds: 30
+  enabled: true
+  cloudflare:
+    account-id: "YOUR_ACCOUNT_ID"
+    api-token: "YOUR_API_TOKEN"
+    model: "@cf/bytedance/stable-diffusion-xl-lightning"
+  cooldown-seconds: 30
