@@ -45,22 +45,22 @@ public final class AIChatbotPlugin extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("aimap")) {
     if (!sender.hasPermission("aichatbot.map")) {
-        sender.sendMessage("§cDu hast keine Berechtigung dafür!");
+        sender.sendMessage("§cYou don't have permissions!");
         return true;
     }
 
     if (!(sender instanceof Player player)) {
-        sender.sendMessage("Dieser Befehl ist nur im Spiel verfügbar.");
+        sender.sendMessage("This command is only aviable on the Server.");
         return true;
     }
 
     if (args.length == 0) {
-        player.sendMessage("§eVerwendung: /aimap <Bildbeschreibung>");
+        player.sendMessage("§eUse: /aimap <Discription>");
         return true;
     }
 
     if (!getConfig().getBoolean("aimap.enabled", true)) {
-        player.sendMessage("§cDie Mapart-Funktion ist deaktiviert.");
+        player.sendMessage("§cThis feature is deactivated.");
         return true;
     }
 
@@ -73,21 +73,21 @@ public final class AIChatbotPlugin extends JavaPlugin {
 }
         if (command.getName().equalsIgnoreCase("ai")) {
             if (!sender.hasPermission("aichatbot.use")) {
-                sendConfigured(sender, "messages.no-permission", "&cDu darfst diesen Befehl nicht verwenden.");
+                sendConfigured(sender, "messages.no-permission", "&cYou don't have permissions to do this.");
                 return true;
             }
             if (args.length == 1 && args[0].equalsIgnoreCase("reload") && sender.hasPermission("aichatbot.admin")) {
                 reloadConfig();
                 rebuildHttpClient();
-                sendConfigured(sender, "messages.reloaded", "&aKonfiguration neu geladen.");
+                sendConfigured(sender, "messages.reloaded", "&aReloading the files...");
                 return true;
             }
             if (args.length == 0) {
-                sendConfigured(sender, "messages.usage", "&eVerwendung: /ai <Nachricht>");
+                sendConfigured(sender, "messages.usage", "&eUse: /ai <chat>");
                 return true;
             }
             if (!(sender instanceof Player player)) {
-                sender.sendMessage("Dieser Befehl ist nur im Spiel verfügbar.");
+                sender.sendMessage("This command is only aviable on the Server.");
                 return true;
             }
             int cooldown = Math.max(0, getConfig().getInt("ai.cooldown-seconds", 3));
@@ -95,12 +95,12 @@ public final class AIChatbotPlugin extends JavaPlugin {
             long previous = lastUse.getOrDefault(player.getUniqueId(), 0L);
             long remaining = cooldown - ((now - previous) / 1000L);
             if (remaining > 0) {
-                sendConfigured(player, "messages.cooldown", "&cBitte warte noch {seconds} Sekunden.", "{seconds}", Long.toString(remaining));
+                sendConfigured(player, "messages.cooldown", "&cPlease wait {seconds} seconds.", "{seconds}", Long.toString(remaining));
                 return true;
             }
             lastUse.put(player.getUniqueId(), now);
             String prompt = String.join(" ", args).trim();
-            sendConfigured(player, "messages.thinking", "&7Die KI denkt nach...");
+            sendConfigured(player, "messages.thinking", "&7AI is thinking...");
             Bukkit.getScheduler().runTaskAsynchronously(this, () -> askOllama(player.getUniqueId(), player.getName(), prompt));
             return true;
         }
@@ -112,7 +112,7 @@ public final class AIChatbotPlugin extends JavaPlugin {
             FileConfiguration config = getConfig();
             String baseUrl = config.getString("ai.base-url", "http://localhost:11434").trim().replaceAll("/+$", "");
             String model = config.getString("ai.model", "llama3.2");
-            String systemPrompt = config.getString("ai.system-prompt", "Du bist ein hilfreicher Assistent.");
+            String systemPrompt = config.getString("ai.system-prompt", "You are a helpful assistant.");
             int maxTokens = Math.max(1, config.getInt("ai.max-tokens", 300));
 
             JsonObject body = new JsonObject();
