@@ -2,7 +2,8 @@ AIChatbotPlugin 1.1.0 - source project
 
 FEATURES
 - /ai <message>
-- Uses the Ollama HTTP chat API; no API key is needed when connecting to a normal local Ollama instance.
+- /aimap <Design>
+- Uses the Groq HTTP chat API; a API key is needed when connecting to a normal local Groq instance.
 - Optional Bearer token for a protected compatible endpoint.
 - Async HTTP requests, configurable cooldown and timeout.
 
