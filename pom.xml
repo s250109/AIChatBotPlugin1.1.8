@@ -18,7 +18,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>AIChatbotPlugin1.1.0</finalName>
+    <finalName>AIChatbotPlugin</finalName>
     <plugins>
       <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.13.0</version><configuration><release>21</release></configuration></plugin>
     </plugins>
