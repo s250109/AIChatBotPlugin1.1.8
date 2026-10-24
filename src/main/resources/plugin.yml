@@ -1,9 +1,9 @@
 name: AIChatbotPlugin
-version: 1.1.0
+version: 1.1.5
 main: com.wabihari.aichatbot.AIChatbotPlugin
 api-version: '1.21'
 author: WabiHari
-description: A Minecraft AI chatbot with AI map generation.
+description: AI chatbot with AI map generation
 
 commands:
 ai:
