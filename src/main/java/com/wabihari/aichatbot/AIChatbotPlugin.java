@@ -25,14 +25,17 @@ public final class AIChatbotPlugin extends JavaPlugin {
     private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacyAmpersand();
     private final Map<UUID, Long> lastUse = new ConcurrentHashMap<>();
     private HttpClient httpClient;
+    private AIMapGenerator aiMapGenerator;
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
-        rebuildHttpClient();
-        getLogger().info("AIChatbotPlugin 1.1.0 enabled. Configure ai.base-url to a reachable Ollama endpoint.");
-    }
+    saveDefaultConfig();
+    rebuildHttpClient();
 
+    aiMapGenerator = new AIMapGenerator(this);
+
+    getLogger().info("AIChatbotPlugin enabled!");
+}
     private void rebuildHttpClient() {
         int timeout = Math.max(5, getConfig().getInt("ai.request-timeout-seconds", 30));
         httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(timeout)).build();
@@ -40,6 +43,34 @@ public final class AIChatbotPlugin extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("aimap")) {
+    if (!sender.hasPermission("aichatbot.map")) {
+        sender.sendMessage("§cDu hast keine Berechtigung dafür!");
+        return true;
+    }
+
+    if (!(sender instanceof Player player)) {
+        sender.sendMessage("Dieser Befehl ist nur im Spiel verfügbar.");
+        return true;
+    }
+
+    if (args.length == 0) {
+        player.sendMessage("§eVerwendung: /aimap <Bildbeschreibung>");
+        return true;
+    }
+
+    if (!getConfig().getBoolean("aimap.enabled", true)) {
+        player.sendMessage("§cDie Mapart-Funktion ist deaktiviert.");
+        return true;
+    }
+
+    String prompt = String.join(" ", args);
+
+    player.sendMessage("§aDein Bild wird generiert! Bitte warte...");
+    aiMapGenerator.generate(player, prompt);
+
+    return true;
+}
         if (command.getName().equalsIgnoreCase("ai")) {
             if (!sender.hasPermission("aichatbot.use")) {
                 sendConfigured(sender, "messages.no-permission", "&cDu darfst diesen Befehl nicht verwenden.");
