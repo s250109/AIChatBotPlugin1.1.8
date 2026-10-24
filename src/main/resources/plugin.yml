@@ -6,14 +6,14 @@ author: WabiHari
 description: AI chatbot with AI map generation
 
 commands:
-ai:
-description: Chat with the AI assistant.
-usage: /ai <message>
-permission: aichatbot.use
-aimap:
-description: Generate an AI image for a Minecraft map.
-usage: /aimap <description>
-permission: aichatbot.map
+  ai:
+    description: Chat with the AI assistant.
+    usage: /ai <message>
+    permission: aichatbot.use
+  aimap:
+    description: Generate an AI image for a Minecraft map.
+    usage: /aimap <description>
+    permission: aichatbot.map
 
 permissions:
 aichatbot.use:
