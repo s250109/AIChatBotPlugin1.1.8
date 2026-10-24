@@ -111,7 +111,7 @@ public final class AIChatbotPlugin extends JavaPlugin {
         try {
             FileConfiguration config = getConfig();
             String baseUrl = config.getString("ai.base-url", "https://api.groq.com/openai/v1").trim().replaceAll("/+$", "");
-            String model = config.getString("ai.model", "llama3.2");
+            String model = config.getString("ai.model", "llama-3.3-70b-versatile");
             String systemPrompt = config.getString("ai.system-prompt", "You are a helpful assistant.");
             int maxTokens = Math.max(1, config.getInt("ai.max-tokens", 300));
 
