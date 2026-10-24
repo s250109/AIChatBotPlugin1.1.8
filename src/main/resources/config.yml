@@ -1,8 +1,8 @@
-
+# AI chatbot
 # Enter your API-Key at api-key. You can get a key at https://console.groq.com/keys .
 ai:
   provider: "groq"
-  api-key: ""
+  api-key: "YOUR_API_KEY"
   model: "openai/gpt-oss-120b"
   base-url: "https://api.groq.com/openai/v1"
   max-tokens: 300
@@ -18,3 +18,13 @@ messages:
   cooldown: "&cPlease wait {seconds} Seconds."
   no-permission: "&cYou don't have permissions to do that."
   reloaded: "&aSuccesfully reloaded."
+
+# AI Map generation
+# Enter your API-Token at api-token. You can get a key at https://dash.cloudflare.com/b9f2234aa3406cf786b341cc9e99547e/ai/workers-ai/api-quick-start . You also need the Account ID.
+aimap:
+enabled: true
+cloudflare:
+account-id: "YOUR_ACCOUNT_ID"
+api-token: "YOUR_CLOUD_TOKEN"
+model: "@cf/bytedance/stable-diffusion-xl-lightning"
+cooldown-seconds: 30
